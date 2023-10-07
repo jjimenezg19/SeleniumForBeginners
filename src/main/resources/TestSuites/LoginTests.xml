@@ -1,0 +1,65 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="NegativeTestsSuite" verbose="1">
+
+    <test name="PositiveLoginTest">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="positiveTests"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.herokuapp.theinternet.LoginTests"/>
+        </classes>
+    </test>
+
+    <test name="NegativeUsernameTests">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="username" value="incorrect"/>
+        <parameter name="password" value="SuperSecretPassword!"/>
+        <parameter name="expectedMessage" value="Your username is invalid!"/>
+        <classes>
+            <class name="com.herokuapp.theinternet.LoginTests">
+                <methods>
+                    <include name="negativeLoginTest"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="NegativePasswordTests">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="username" value="tomsmith"/>
+        <parameter name="password" value="IncorrectPassword!"/>
+        <parameter name="expectedMessage" value="Your password is invalid!"/>
+        <classes>
+            <class name="com.herokuapp.theinternet.LoginTests">
+                <methods>
+                    <include name="negativeLoginTest"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- <test name="NegativeTests">
+        &lt;!&ndash; How to Create group of test &ndash;&gt;
+        &lt;!&ndash; <groups>
+             <run>
+                 <include name="smokeTests"/>
+             </run>
+         </groups>&ndash;&gt;
+
+         <classes>
+             <class name="com.herokuapp.theinternet.NegativeTests">
+                 &lt;!&ndash;<methods>
+                   Another way to included or excluded tests
+                     <include name="IncorrectUsernameTest"/>
+                     <exclude name="IncorrectUsernameTest"/>
+                 </methods>&ndash;&gt;
+             </class>
+
+         </classes>
+     </test>-->
+
+</suite>
